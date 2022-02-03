@@ -26,7 +26,10 @@ shinyUI(fluidPage(
                         max = 50,
                         value = 30),
             colourInput('colour_line', "specify color",value='red'),
-            selectInput("VARIABLE","Specify Variable", colnames(dat1)[-(1:3)])
+            selectInput("Y value","Specify Variable", colnames(dat1)[-(1:3)],
+                        multiple = TRUE,
+                        selectize = TRUE),
+            uiOutput("ycol")
         ),
 
         # Show a plot of the generated distribution
