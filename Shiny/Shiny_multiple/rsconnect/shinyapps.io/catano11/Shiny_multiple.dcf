@@ -5,10 +5,10 @@ account: catano11
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5628443
-bundleId: 5566225
+bundleId: 5591264
 url: https://catano11.shinyapps.io/Shiny_multiple/
-when: 1644525427.04367
-lastSyncTime: 1644525427.04367
+when: 1645128597.0666
+lastSyncTime: 1645128597.0666
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: cached_data.tsv

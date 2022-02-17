@@ -10,12 +10,13 @@
 library(shiny)
 library(colourpicker);
 library(shinyBS);
+library(plotly)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("COVID Dashboard"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
@@ -28,13 +29,13 @@ shinyUI(fluidPage(
             colourInput('colour_line', "specify color",value='red'),
             selectInput("Y value","Specify Variable", colnames(dat1)[-(1:3)],
                         multiple = TRUE,
-                        selectize = TRUE),
+                        selectize = TRUE, selected = colnames(dat1)[5]),
             uiOutput("ycol")
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            plotlyOutput("distPlot")
         )
     )
 ))

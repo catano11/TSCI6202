@@ -15,34 +15,25 @@ shinyServer(function(input, output) {
 
     output$ycol <- renderUI({
 
-        lapply(input$`Y value`, function(vv) colourInput(paste0(vv, "_colour")
-        #colourInput('colour_line_1',
-                    ,"specify color"))
+        lapply(seq_along(input$`Y value`), function(vv) colourInput(paste0(input$`Y value`[vv],
+                            "_colour"),"specify color",hcl.colors(20,palette='Dark 3')[vv]))
 
     })
 
-    output$distPlot <- renderPlot({
+    output$distPlot <- renderPlotly({
     print("starting renderPlot")
-        # generate bins based on input$bins from ui.R
-        #x    <- faithful[, 2]
-        #bins <- seq(min(x), max(x), length.out = input$bins + 1)
 
-        # draw the ggplot with the specified number of bins
-       #browser()
-
-
-        # input <- list(colour_line=c("red"),
-        #              'Y value' = c("strac_covid_positive_in_hospita", "total_case_daily_change",
-        #                             "total_case_cumulative")
 
          geom.list <- lapply(input$`Y value`, function(xx) geom_line(aes_string(y=xx),
-                                                                    linetype="dotted",
+                                                                    #linetype="dotted",
                                                                     color = input[[paste0(xx, "_colour")]], size=1))
-message("geom.list")
+#message("geom.list")
 
-         ggplot(dat1, aes_string( x = "reporting_date")) +
+         plt <- ggplot(dat1, aes_string( x = "reporting_date")) +
              geom.list +
              ylab("Counts")
+         ggplotly(plt) %>%
+             layout(dragmode='select')
 
     })
 
