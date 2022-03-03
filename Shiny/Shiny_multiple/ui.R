@@ -19,7 +19,9 @@ shinyUI(fluidPage(
     titlePanel("COVID Dashboard"),
 
     # Sidebar with a slider input for number of bins
-    sidebarLayout(
+    tabsetPanel(
+    tabPanel(
+        sidebarLayout(
         sidebarPanel(
             sliderInput("bins",
                         "Number of bins:",
@@ -34,8 +36,10 @@ shinyUI(fluidPage(
         ),
 
         # Show a plot of the generated distribution
-        mainPanel(
-            plotlyOutput("distPlot")
+        mainPanel(fluidRow( column(10,
+            plotlyOutput("distPlot")))
         )
     )
+    ))
+
 ))
