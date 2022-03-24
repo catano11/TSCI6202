@@ -99,6 +99,9 @@ Imports:
   withr,
   xtable,
   yaml,
-  zip
+  zip,
+  gt,
+  tidyr
 Remotes:
   ramnathv/rCharts
+  jthomasmock/gtExtras

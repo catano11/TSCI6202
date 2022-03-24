@@ -19,6 +19,11 @@ shinyServer(function(input, output) {
                             "_colour"),"specify color",hcl.colors(20,palette='Dark 3')[vv]))
 
     })
+    # gt_plot ----
+    output$gTable_test <- render_gt(Table1)
+
+    # distPlot ----
+
 
     output$distPlot <- renderPlotly({
     print("starting renderPlot")

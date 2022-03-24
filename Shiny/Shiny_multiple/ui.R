@@ -20,7 +20,7 @@ shinyUI(fluidPage(
 
     # Sidebar with a slider input for number of bins
     tabsetPanel(
-    tabPanel(
+    tabPanel("COVID_19_Panel",
         sidebarLayout(
         sidebarPanel(
             sliderInput("bins",
@@ -38,8 +38,6 @@ shinyUI(fluidPage(
         # Show a plot of the generated distribution
         mainPanel(fluidRow( column(10,
             plotlyOutput("distPlot")))
-        )
-    )
-    ))
-
-))
+        )))
+    , tabPanel("Empty_for_now", gt_output('gTable_test'))
+    )))
