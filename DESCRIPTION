@@ -103,5 +103,5 @@ Imports:
   gt,
   tidyr
 Remotes:
-  ramnathv/rCharts
+  ramnathv/rCharts,
   jthomasmock/gtExtras
