@@ -28,8 +28,15 @@ Table1 <- gt(dat1) %>% cols_hide(c("globalid", "objectid")) %>%
   cols_label(total_case_cumulative=html("Cumulative&nbsp;Cases"),deaths_daily_change=html("Deaths&nbsp;per&nbsp;day"))
 
 
-Summary1 <- pivot_longer(dat1, any_of(colnames(dat1)[-(1:3)])) %>%
+Summary1 <- dat1 %>%
   arrange(reporting_date) %>%
+  pivot_longer(any_of(colnames(dat1)[-(1:3)])) %>%
   group_by(name) %>%
-  summarize(across(.fns = ~list(.x)))
+  summarize(med =median(value, na.rm = T),
+            SD=sd(value,na.rm = T),
+            across(.fns = ~list(na.omit(.x)))) %>%
+  mutate(Hist = value, Dense = value) %>%
+  rename(Sparkline = value)
 
+hide <- c('globalid', 'objectid')
+hide_spark <- c(hide, 'reporting_date')
