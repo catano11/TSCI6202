@@ -96,10 +96,10 @@ dat2 <- dat1 %>%
   gt_sparkline (spark, same_limit = F) %>%
   gt_sparkline (hist, type = "histogram", same_limit = F) %>%
   gt_sparkline (dense, type = "density", same_limit = F) %>%
-  cols_move("spark", after = "name") %>%
+  cols_move("spark" , after = "name") %>%
   cols_label("spark" = "**Sparkline**"),
-   # Hist = html("<span,style="color:red">Histogram</span>"),
-    #list = list(Median =  "MEDIAN")
+   hist = html("<span,style='color:red'>Histogram</span>"),
+   .list = list(med =  "Median"))
 
 
 dat2
@@ -110,7 +110,25 @@ gt(dat2)
 
 
 
+#dat2 <- read.csv('https://www.census.gov/programs-surveys/popest/technical-documentation/research/evaluation-estimates/2020-evaluation-estimates/2010s-counties-total.html')
 
+#Flashlight tab draft
 
+#fit model
 
+fit <- lm(total_case_daily_change ~ strac_covid_positive_in_icu, data = dat1)
 
+rmse(total_case_daily_change , strac_covid_positive_in_icu)
+
+#Make flashlight
+fl <- flashlight(
+  model =  fit,
+  data =  dat1,
+  y = "total_case_daily_change",
+  label = "ols",
+  metrics = list(rmse = rmse, 'R-squared' = r_squared)
+
+)
+
+#Performance: rmse and R-squared
+plot(light_performance(fl), fill = "darkred")
