@@ -56,7 +56,15 @@ shinyUI(fluidPage(
                      mainPanel(fluidRow(column(10,
                                                gt_output('distPlot_test'))))
                  )),
-        tabPanel(title = "debug", actionButton("debug","DEBUG" )))
+        tabPanel(title = "debug", actionButton("debug","DEBUG" )),
+
+        tabPanel(title = "Final",
+                 sidebarLayout(
+                    sidebarPanel("Placeholder"),
+                    mainPanel("MainPanel Placeholder"))))
+
+
+
 
 
 

@@ -45,6 +45,8 @@ shinyServer(function(input, output) {
     output$distPlot <-renderPlotly({
         print("starting render plot")
 
+        need(dat1,input$`Y value`, message ="Processing")
+
 
         geom_list <- lapply(input$`Y value`,
                             function(xx) geom_line(aes_string(y=xx),
