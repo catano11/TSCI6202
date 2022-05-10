@@ -102,6 +102,8 @@ Imports:
   zip,
   gt,
   tidyr
+  flashlight
+  MetricsWeighted
 Remotes:
   ramnathv/rCharts,
   jthomasmock/gtExtras

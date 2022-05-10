@@ -60,4 +60,14 @@ perf
 plot(perf, fill = "darkred") +
   xlab(element_blank())
 
-(imp <- light_importance(fls, v = x))
+#(imp <- light_importance(fls, v = x))
+
+(imp <- light_importance(fls))
+plot(imp)
+v<- c("deaths_daily_change")
+
+
+plot(light_ice(fls, v))
+plot(light_profile(fls, v))
+plot(light_effects(fls, v))
+#plot(light_breakdown(fls, data = ))

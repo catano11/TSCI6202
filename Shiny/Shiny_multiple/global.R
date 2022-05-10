@@ -6,6 +6,8 @@ library(ggplot2)
 library(gt)
 library(gtExtras)
 library(tidyr)
+library(flashlight)
+library(MetricsWeighted)
 
 
 if(!file.exists("cached_data.tsv")) {
